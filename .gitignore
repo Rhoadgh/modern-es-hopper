@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# ES Specific (The heavy stuff)
+logs/
+videos/
+checkpoint/
+
+# IDE
+.idea/
+.DS_Store
