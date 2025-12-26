@@ -48,4 +48,5 @@ python record_hopper.py
 ## 📊 Results
 The Hopper begins learning stable hopping patterns within ~40 iterations. As training progresses, the EpRewMean will increase, resulting in faster and more stable movement.
 
+##
 *Original research by OpenAI (2017). Modernized by Rhoad Ghunaim.*
