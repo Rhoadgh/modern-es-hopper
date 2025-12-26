@@ -12,16 +12,19 @@ This is a modernized fork of the OpenAI Evolution Strategies starter code. It ha
 2. `export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES`
 
 ## 🏃 Running the Experiment
-**Step 1: Start the Master**
+### **Step 1: Start the Master**
 ```bash
 python -m es_distributed.main master --exp_str configurations/hopper.json
-
-**Step 2: Start the Workers**
+```
+### **Step 2: Start the Workers**
 ```bash
 python -m es_distributed.main workers --num_workers 4
-
-**Step 3: Record Progress**
+```
+### **Step 3: Record Progress**
 ```bash
 python record_hopper.py
-
+```
 Original research by OpenAI (2017). Modernized by Rhoad Ghunaim.
+
+## 📊 Results
+The Hopper begins learning stable hopping patterns within ~40 iterations.
