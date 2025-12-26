@@ -1,24 +1,27 @@
-**Status:** Archive (code is provided as-is, no updates expected)
+# Modern ES Starter (Hopper-v4)
 
-# Distributed evolution
+This is a modernized fork of the OpenAI Evolution Strategies starter code. It has been updated to run on **macOS (Apple Silicon)** using **Python 3.10+** and **TensorFlow 2.15+**.
 
-This is a distributed implementation of the algorithm described in [Evolution Strategies as a Scalable Alternative to Reinforcement Learning](https://arxiv.org/abs/1703.03864) (Tim Salimans, Jonathan Ho, Xi Chen, Ilya Sutskever).
+## 🚀 Key Modernizations
+- **Environment:** Migrated from `gym` to `gymnasium` (Hopper-v4).
+- **Architecture:** Compatibility fixes for Apple Silicon M1/M2/M3 chips.
+- **Visualization:** Included `record_hopper.py` for headless MP4 generation.
 
-The implementation here uses a master-worker architecture: at each iteration, the master broadcasts parameters to the workers, and the workers send returns back to the master. The humanoid scaling experiment in the paper was generated with an implementation similar to this one.
+## 📦 Setup
+1. `conda activate EShopper`
+2. `export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES`
 
-The code here runs on EC2, so you need an AWS account. It's resilient to worker termination, so it's safe to run the workers on spot instances.
+## 🏃 Running the Experiment
+**Step 1: Start the Master**
+```bash
+python -m es_distributed.main master --exp_str configurations/hopper.json
 
-## Instructions
+**Step 2: Start the Workers**
+```bash
+python -m es_distributed.main workers --num_workers 4
 
-### Build AMI
-The humanoid experiment depends on Mujoco. Provide your own Mujoco license and binary in `scripts/dependency.sh`.
+**Step 3: Record Progress**
+```bash
+python record_hopper.py
 
-Install [Packer](https://www.packer.io/), and then build images by running (you can optionally configure `scripts/packer.json` to choose build instance or AWS regions)
-```
-cd scripts && packer build packer.json
-```
-
-Packer should return you a list of AMI ids, which you should place in `AMI_MAP` in `scripts/launch.py`.
-
-### Launching
-Use `scripts/launch.py` along with an experiment JSON file. An example JSON file is provided in the `configurations` directory. You must fill in all command-line arguments to `scripts/launch.py`.
+Original research by OpenAI (2017). Modernized by Rhoad Ghunaim.
