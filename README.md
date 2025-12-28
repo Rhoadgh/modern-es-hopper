@@ -33,7 +33,9 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 Open two separate terminal tabs to run the distributed training:
 ### **Step 1: Start the Master**
 ```bash
-python -m es_distributed.main master --exp_str configurations/hopper.json
+python -m es_distributed.main master --exp_file configurations/hopper.json
+
+python -m es_distributed.main master --exp_file configurations/hopper.json --master_host localhost --master_port 6379 --log_dir ./logs
 ```
 ### **Step 2: Start the Workers**
 ```bash
